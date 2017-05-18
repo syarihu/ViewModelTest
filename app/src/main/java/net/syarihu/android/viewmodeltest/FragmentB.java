@@ -15,7 +15,7 @@ import net.syarihu.android.viewmodeltest.databinding.FragmentBBinding;
 import net.syarihu.android.viewmodeltest.viewmodel.SharedViewModel;
 
 public class FragmentB extends LifecycleFragment {
-    FragmentBBinding binding;
+    private FragmentBBinding binding;
 
     public static FragmentB newInstance() {
         return new FragmentB();
@@ -25,7 +25,6 @@ public class FragmentB extends LifecycleFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_b, container, false);
-        binding.button2.setOnClickListener((View.OnClickListener) getActivity());
         return binding.getRoot();
     }
 
@@ -33,6 +32,7 @@ public class FragmentB extends LifecycleFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         SharedViewModel model = ViewModelProviders.of(getActivity()).get(SharedViewModel.class);
+        binding.button2.setOnClickListener((View.OnClickListener) getActivity());
         binding.editText2.setText(model.getSelected().getValue());
         binding.editText2.addTextChangedListener(new TextWatcher() {
             @Override
