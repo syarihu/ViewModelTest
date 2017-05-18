@@ -15,7 +15,6 @@ import net.syarihu.android.viewmodeltest.databinding.FragmentABinding;
 import net.syarihu.android.viewmodeltest.viewmodel.SharedViewModel;
 
 public class FragmentA extends LifecycleFragment {
-    private SharedViewModel model;
     private FragmentABinding binding;
 
     public static FragmentA newInstance() {
@@ -32,7 +31,7 @@ public class FragmentA extends LifecycleFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        model = ViewModelProviders.of(getActivity()).get(SharedViewModel.class);
+        SharedViewModel model = ViewModelProviders.of(getActivity()).get(SharedViewModel.class);
         binding.button1.setOnClickListener((View.OnClickListener) getActivity());
         binding.editText.setText(model.getSelected().getValue());
         binding.editText.addTextChangedListener(new TextWatcher() {
