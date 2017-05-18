@@ -2,18 +2,14 @@ package net.syarihu.android.viewmodeltest;
 
 import android.arch.lifecycle.LifecycleActivity;
 import android.arch.lifecycle.LifecycleFragment;
-import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.view.View;
-
-import net.syarihu.android.viewmodeltest.viewmodel.SharedViewModel;
 
 public class MainActivity extends LifecycleActivity implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ViewModelProviders.of(this).get(SharedViewModel.class);
         replaceFragment(FragmentA.newInstance());
     }
 
